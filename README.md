@@ -13,3 +13,4 @@ Learning points:
 * Project Structure
 * SQLite via SQLModel (SQLAlchemy)
 * Working with APIs and json data
+* ENV files for hiding sensitive data

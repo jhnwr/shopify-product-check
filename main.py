@@ -1,3 +1,4 @@
+# https://github.com/jhnwr/shopify-product-check
 import csv
 
 from dotenv import load_dotenv
