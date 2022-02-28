@@ -1,7 +1,8 @@
 # Shopfiy Store Product Checker
 
 > Alerts via email
->This code was designed for educational purposes.
+
+> This code was designed for educational purposes.
 
 This will take the shopify stores from the storelist.csv and save all the current products to a database.
 
