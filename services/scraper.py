@@ -6,12 +6,13 @@ from db.models import Product
 
 
 def extract(store):
+    s = requests.session()
     results = []
 
     def pages(page):
         # view source and search for '.myshopify.com' for main URL
         url = store + f'/products.json?limit=250&page={page}'
-        r = requests.get(url)
+        r = s.get(url)
         if r.status_code != 200:
             r.raise_for_status()
         resp = r.json()
