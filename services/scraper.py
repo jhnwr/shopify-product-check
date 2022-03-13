@@ -1,3 +1,5 @@
+from typing import List
+
 import requests
 from sqlmodel import Session, select
 
@@ -5,7 +7,7 @@ from db.database import engine
 from db.models import Product
 
 
-def extract(store):
+def extract(store: str) -> List:
     s = requests.session()
     results = []
 
@@ -34,7 +36,7 @@ def extract(store):
     return combined
 
 
-def transform(store, data):
+def transform(store: str, data: List) -> List:
     formatted_data = []
     for product in data:
         formatted_data.append(
@@ -43,7 +45,7 @@ def transform(store, data):
     return formatted_data
 
 
-def add_products(json_data):
+def add_products(json_data) -> List:
     new_items = []
     with Session(engine) as session:
         for item in json_data:
