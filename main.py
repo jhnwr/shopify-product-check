@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 
 from db.database import create_db_and_tables
 from services.email_service import send_mail
+from services.read_service import get_all, to_csv
 from services.scraper import extract, transform, add_products
 
 
@@ -38,9 +39,16 @@ def alert(new):
 def main():
     create_db_and_tables()
     configure()
-    ni = update()
-    alert(ni)
+    newItems = update()
+    # alert(newItems)
+
+
+def main_read():
+    data = get_all()
+    to_csv(data)
 
 
 if __name__ == '__main__':
-    main()
+    # main()
+    main_read()
+

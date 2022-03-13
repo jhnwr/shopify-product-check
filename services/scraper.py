@@ -6,14 +6,15 @@ from sqlmodel import Session, select
 from db.database import engine
 from db.models import Product
 
+# TODO - we never get the handle, the scraper is wrong here somewhere
 
-def extract(store: str) -> List:
+def extract(store_name: str) -> List:
     s = requests.session()
     results = []
 
     def pages(page):
         # view source and search for '.myshopify.com' for main URL
-        url = store + f'/products.json?limit=250&page={page}'
+        url = store_name + f'/products.json?limit=250&page={page}'
         r = s.get(url)
         if r.status_code != 200:
             r.raise_for_status()
@@ -36,11 +37,11 @@ def extract(store: str) -> List:
     return combined
 
 
-def transform(store: str, data: List) -> List:
+def transform(store_name: str, data: List) -> List:
     formatted_data = []
     for product in data:
         formatted_data.append(
-            (store, product['id'], product['title'], product['published_at'], product['handle'])
+            (store_name, product['id'], product['title'], product['published_at'], product['handle'])
         )
     return formatted_data
 
