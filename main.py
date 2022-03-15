@@ -40,6 +40,7 @@ def main():
     create_db_and_tables()
     configure()
     newItems = update()
+    print(len(newItems))
     # alert(newItems)
 
 
@@ -49,6 +50,6 @@ def main_read():
 
 
 if __name__ == '__main__':
-    # main()
+    main()
     main_read()
 

@@ -6,6 +6,7 @@ from sqlmodel import Session, select
 from db.database import engine
 from db.models import Product
 
+
 # TODO - we never get the handle, the scraper is wrong here somewhere
 
 def extract(store_name: str) -> List:
